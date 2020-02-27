@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title></title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <script src="script.js"></script>
-    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
-    <script>
-    SC.initialize({
-    client_id: 'YOUR_CLIENT_ID',
-    redirect_uri: 'https://example.com/callback'
-    });
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width'>
+        <title></title>
+        <link href='style.css' rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <h1 class='title'>Hello, welcome to my sample page</h1>
 
-    // initiate auth popup
-    SC.connect().then(function() {
-    return SC.get('/me');
-    }).then(function(me) {
-    alert('Hello, ' + me.username);
-    });
-    </script>
-  </body>
+        <div class="links">
+            <p id="showLink">hi</p>
+        </div>
+        <script src='script.js'></script>
+    </body>
 </html>
