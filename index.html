@@ -9,10 +9,13 @@
     <body>
         <div id="nudge">
             <p>MTA Live Map wants to use your location to show nearby trains</p>
-            <button onclick='nudgeUserInput('allow')'>Allow</button>
-            <button onclick='nudgeUserInput('deny')'>Deny</button>
+            <button onclick='initialUserPermissions.geoSuccess()'>Allow</button>
+            <button onclick='initialUserPermissions.geoError()'>Deny</button>
         </div>
-        <div id="map"></div>
+        <div id="map">
+            <p id='startLat'></p>
+            <p id='startLon'></p>
+        </div>
         <script src='googlemap.js'></script>
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlGFg3gqtgkFkoAAkiFT3gtrS0WZnmuvA&callback=initMap">

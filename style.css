@@ -33,3 +33,14 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+#nudge{
+    display: none;
+    background-color: tan;
+    position: relative;
+    padding: 0px 5px 5px 5px;
+    margin: 0px 2px 2px 2px;
+}
+#nudge > p{
+    
+}

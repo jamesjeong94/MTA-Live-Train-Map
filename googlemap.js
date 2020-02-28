@@ -1,6 +1,5 @@
 const key = 'AIzaSyDlGFg3gqtgkFkoAAkiFT3gtrS0WZnmuvA'
-
-
+let currentLat, currentLon
 
 if (navigator.geolocation) {
     console.log('Geolocation is supported!');
@@ -9,7 +8,9 @@ else {
     console.log('Geolocation is not supported for this Browser/OS.');
 }
 
+
 const initialUserPermissions = function () {
+    console.log("init!")
     let startPos
     let nudge = document.getElementById('nudge')
     
@@ -23,7 +24,7 @@ const initialUserPermissions = function () {
 
     let nudgeTimeoutId = setTimeout(showNudgeBanner,5000)
 
-    let geoSuccess = function (position) {
+    var geoSuccess = function (position) {
         hideNudgeBanner()
         clearTimeOut(nudgeTimeoutId)
 
@@ -31,25 +32,24 @@ const initialUserPermissions = function () {
         document.getElementById('startLat').innerHTML = startPos.coords.latitude
         document.getElementById('startLon').innerHTML = startPos.coords.longitude
     }
-    let geoError = function (error) {
+    var geoError = function (error) {
         switch(error.code) {
             case error.TIME:
                 showNudgeBanner();
                 break;
         }
     }
-    if (nudgeUserInput === 'allow'){
-        geoSuccess()
-    }
-    else if (nudgeUserInput === 'deny'){
-        geoError
-    }
+    navigator.geolocation.getCurrentPosition(geoSuccess, geoError)
+    window.removeEventListener('click',initialUserPermissions)
 }
+
+window.addEventListener("click", initialUserPermissions);
+
+
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
+      center: {lat: 40, lng: 40},
       zoom: 10
-
     });
   }
