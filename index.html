@@ -7,11 +7,15 @@
         <link href='style.css' rel='stylesheet' type='text/css' />
     </head>
     <body>
-        <h1 class='title'>Hello, welcome to my sample page</h1>
-
-        <div class="links">
-            <p id="sampleWindow">hi</p>
+        <div id="nudge">
+            <p>MTA Live Map wants to use your location to show nearby trains</p>
+            <button onclick='nudgeUserInput('allow')'>Allow</button>
+            <button onclick='nudgeUserInput('deny')'>Deny</button>
         </div>
-        <script src='script.js'></script>
+        <div id="map"></div>
+        <script src='googlemap.js'></script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlGFg3gqtgkFkoAAkiFT3gtrS0WZnmuvA&callback=initMap">
+        </script>
     </body>
 </html>

@@ -13,6 +13,7 @@ const trainLineFeeds = {
     purpleLine: `http://datamine.mta.info/mta_esi.php?key=${apiKey}&feed_id=51`
 }
 
+
 const requestSettngs = {
     method: 'GET',
     url: trainLineFeeds.orangeLine,
