@@ -1,55 +1,31 @@
 const key = 'AIzaSyDlGFg3gqtgkFkoAAkiFT3gtrS0WZnmuvA'
-let currentLat, currentLon
+let currentLat, currentLon, infoWindow, pos
 
+stopMarker.drawSubwayMarkers()
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 40.7, lng: -74},
+      zoom: 15
+    });
+    infoWindow = new google.maps.InfoWindow
+}
 if (navigator.geolocation) {
     console.log('Geolocation is supported!');
+    navigator.geolocation.getCurrentPosition((position) => {
+        pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        }
+        infoWindow.setPosition(pos)
+        infoWindow.setContent('You are located here!')
+        infoWindow.open(map)
+        map.setCenter(pos)
+        }, () => {
+            handleLocationError(true, infoWindow, map.getCenter())
+        })
 }
 else {
     console.log('Geolocation is not supported for this Browser/OS.');
 }
 
 
-const initialUserPermissions = function () {
-    console.log("init!")
-    let startPos
-    let nudge = document.getElementById('nudge')
-    
-    let showNudgeBanner = function () {
-        nudge.style.display = 'block';
-    }
-
-    let hideNudgeBanner = function () {
-        nudge.style.display = 'none';
-    }
-
-    let nudgeTimeoutId = setTimeout(showNudgeBanner,5000)
-
-    var geoSuccess = function (position) {
-        hideNudgeBanner()
-        clearTimeOut(nudgeTimeoutId)
-
-        startPos = position
-        document.getElementById('startLat').innerHTML = startPos.coords.latitude
-        document.getElementById('startLon').innerHTML = startPos.coords.longitude
-    }
-    var geoError = function (error) {
-        switch(error.code) {
-            case error.TIME:
-                showNudgeBanner();
-                break;
-        }
-    }
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError)
-    window.removeEventListener('click',initialUserPermissions)
-}
-
-window.addEventListener("click", initialUserPermissions);
-
-
-
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 40, lng: 40},
-      zoom: 10
-    });
-  }
