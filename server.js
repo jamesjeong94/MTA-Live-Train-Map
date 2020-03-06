@@ -1,5 +1,5 @@
 const GtfsRealTimeBindings = require('gtfs-realtime-bindings')
-const axios = require('axios')
+const axios = require('axios').default
 const fs = require('fs')
 
 const apiKey = '282ebf9d15c7efa63bd01707b0ac86fc'
@@ -15,22 +15,25 @@ const trainLineFeeds = {
     purpleLine: `http://datamine.mta.info/mta_esi.php?key=${apiKey}&feed_id=51`
 }
 
-
-
-axios({
-    method: 'get',
-    url: trainLineFeeds.orangeLine,
-    encoding: null,
-})
-    .then((response) => {
-        return console.log(response.data)
+const getGtfsOfFeed = (url) => {
+    axios({
+        method: 'get',
+        url,
+        transformResponse: [(data) => {
+            return  GtfsRealTimeBindings.FeedMessage.decode(data)
+        }]
     })
-    .catch((error) => {
-        if(error.response){
-            return console.log(error.response.data)
-        }
-    })
+        .catch((error) => {
+            if(error.response){
+                return console.log(error.response.data)
+            }
+        })
+        .then((response) => {
+            return console.log(response.data)
+        })
+};
 
+getGtfsOfFeed(trainLineFeeds.orangeLine)
 
 // request(requestSettngs, (error, response, body) => {
 //     if (!error && response.statusCode === 200){
