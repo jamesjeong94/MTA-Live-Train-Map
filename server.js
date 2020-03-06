@@ -1,5 +1,7 @@
 const GtfsRealTimeBindings = require('gtfs-realtime-bindings')
-const request = require('request')
+const axios = require('axios')
+const fs = require('fs')
+
 const apiKey = '282ebf9d15c7efa63bd01707b0ac86fc'
 
 const trainLineFeeds = {
@@ -14,24 +16,31 @@ const trainLineFeeds = {
 }
 
 
-const requestSettngs = {
-    method: 'GET',
+
+axios({
+    method: 'get',
     url: trainLineFeeds.orangeLine,
-    encoding: null
-}
-
-let sampleWindow = document.getElementById("sampleWindow")
-
-request(requestSettngs, (error, response, body) => {
-    if (!error && response.statusCode === 200){
-        let feed = GtfsRealTimeBindings.transit_realtime.FeedMessage.decode(body);
-        let position = GtfsRealTimeBindings.transit_realtime
-        console.log(feed.entity[0].tripUpdate);
-        sampleWindow.innerHTML(JSON.stringify(feed.entity[0].tripUpdate))
-        feed.entity.forEach((entity) => {
-            if (entity.tripUpdate){
-                //console.log('printing',entity.tripUpdate)
-            }
-        })
-    }
+    encoding: null,
 })
+    .then((response) => {
+        return console.log(response.data)
+    })
+    .catch((error) => {
+        if(error.response){
+            return console.log(error.response.data)
+        }
+    })
+
+
+// request(requestSettngs, (error, response, body) => {
+//     if (!error && response.statusCode === 200){
+//         let feed = GtfsRealTimeBindings.transit_realtime.FeedMessage.decode(body);
+//         let position = GtfsRealTimeBindings.transit_realtime
+//         console.log(feed.entity);
+//         feed.entity.forEach((entity) => {
+//             if (entity.tripUpdate){
+//                 //console.log('printing',entity.tripUpdate)
+//             }
+//         })
+//     }
+// })

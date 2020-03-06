@@ -1,0 +1,23 @@
+{
+  "name": "mta-live-train-map",
+  "version": "1.0.0",
+  "description": "",
+  "main": "googlemap.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesjeong94/MTA-Live-Train-Map.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesjeong94/MTA-Live-Train-Map/issues"
+  },
+  "homepage": "https://github.com/jamesjeong94/MTA-Live-Train-Map#readme",
+  "dependencies": {
+    "gtfs-realtime-bindings": "0.0.5"
+  }
+}
