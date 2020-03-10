@@ -40,6 +40,9 @@ const drawSubwayMarkers = function(){
     }
 }
 
+drawSubwayMarkers()
+
+
 module.exports = {
     drawSubwayMarkers: drawSubwayMarkers
 }

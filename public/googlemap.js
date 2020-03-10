@@ -1,7 +1,5 @@
-const key = 'AIzaSyDlGFg3gqtgkFkoAAkiFT3gtrS0WZnmuvA'
 let currentLat, currentLon, infoWindow, pos
 
-stopMarker.drawSubwayMarkers()
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 40.7, lng: -74},
@@ -27,5 +25,4 @@ if (navigator.geolocation) {
 else {
     console.log('Geolocation is not supported for this Browser/OS.');
 }
-
 

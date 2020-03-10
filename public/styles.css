@@ -1,0 +1,22 @@
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#inputBox{
+    position: absolute;
+    display: flex;
+    width: 20%;
+    height: 200px;
+    border: 1px solid black;
+    right: 0;
+    top: 0;
+    background-color: aquamarine;
+    opacity: 0.7;
+}
