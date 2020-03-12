@@ -1,6 +1,6 @@
 
 
-let currentLat, currentLon, infoWindow, pos
+let currentLat, currentLon, infoWindow, pos, map
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -37,10 +37,10 @@ subwayLineSubmission.addEventListener('submit',(e) => {
     fetch(`/mta?subwayline=${requestedSubway}`).then((response) => {
         response.json().then((data) => {
             if (data.error){
-                console.log(data.error)
+                return console.log(data.error)
             }
             else{
-                console.log(data)
+                return console.log(data)
             }
         })
     })

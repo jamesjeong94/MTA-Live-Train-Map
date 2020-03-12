@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
-const drawSubwayMarker = require('./stopMarker')
+const getStopData = require('./getStopData')
+const drawStopMarkers = require('./public/drawStopMarkers')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -16,7 +17,8 @@ app.get('/', (req,res) => {
 
 app.get('/mta', (req,res) => {
     console.log(req.query.subwayline)
-    console.log(drawSubwayMarker.drawSubwayMarkers(req.query.subwayline))
+    const stopData = getStopData.getStopData(req.query.subwayline)
+    drawStopMarkers.drawStopMarkers(stopData)
 })
 
 app.listen(port,() => {

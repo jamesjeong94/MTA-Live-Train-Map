@@ -29,10 +29,10 @@ const colorInStationCheck = function(stop,subwayColor) {
     }
 }
 
-let userInputColor = 'gray'
+//let userInputColor = 'gray'
 
 
-const drawSubwayMarkers = function(userInputColor){
+const getStopData = function(userInputColor){
     let result = {}
     for(let stop in stopsDataParsed){
         if(colorInStationCheck(stopsDataParsed[stop]['Daytime Routes'],userInputColor)){
@@ -48,9 +48,9 @@ const drawSubwayMarkers = function(userInputColor){
 }
 
 
-const test = drawSubwayMarkers(userInputColor)
-console.log(test)
+// const test = getStopData(userInputColor)
+// console.log(test)
 
 module.exports = {
-    drawSubwayMarkers: drawSubwayMarkers
+    getStopData: getStopData
 }
