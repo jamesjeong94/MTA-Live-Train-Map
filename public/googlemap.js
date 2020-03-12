@@ -1,3 +1,5 @@
+
+
 let currentLat, currentLon, infoWindow, pos
 
 function initMap() {
@@ -25,4 +27,22 @@ if (navigator.geolocation) {
 else {
     console.log('Geolocation is not supported for this Browser/OS.');
 }
+const subwayLineSubmission = document.getElementById('subwayLineSelection')
+const subwayLineSelected = document.getElementById('subwayLine')
 
+subwayLineSubmission.addEventListener('submit',(e) => {
+    e.preventDefault()
+    const requestedSubway = subwayLineSelected.options[subwayLineSelected.selectedIndex].value
+    console.log(requestedSubway)
+    fetch(`/mta?subwayline=${requestedSubway}`).then((response) => {
+        response.json().then((data) => {
+            if (data.error){
+                console.log(data.error)
+            }
+            else{
+                console.log(data)
+            }
+        })
+    })
+
+})

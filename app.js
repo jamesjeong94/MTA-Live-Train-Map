@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const googleMapApi = require('./api/components/googlemapapi')
+const drawSubwayMarker = require('./stopMarker')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -12,6 +12,11 @@ app.set('view engine','html')
 
 app.get('/', (req,res) => {
     res.sendFile(publicDirectoryPath+'/index.html')
+})
+
+app.get('/mta', (req,res) => {
+    console.log(req.query.subwayline)
+    console.log(drawSubwayMarker.drawSubwayMarkers(req.query.subwayline))
 })
 
 app.listen(port,() => {
