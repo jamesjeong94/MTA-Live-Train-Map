@@ -2,3 +2,6 @@
 
 #api keys
 .env
+
+#bundle
+bundle.js
