@@ -1,10 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const stopsRouter = require('./routes/stopsRouter.js');
 require('dotenv').config();
 
-const app = require('app');
+const app = express();
 
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 
 app.use(express.static('../public'));
 app.use('/subway', stopsRouter);

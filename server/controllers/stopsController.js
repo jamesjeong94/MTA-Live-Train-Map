@@ -1,3 +1,5 @@
 module.exports = {
-  getTrainStops: (train) => {},
+  getTrainStops: (req, res) => {
+    let line = req.query.line;
+  },
 };

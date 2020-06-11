@@ -1,9 +1,22 @@
 import React from 'react';
 import { lines } from '../helpers/NavBarHelpers.js';
+import axios from 'axios';
 
 const NavBar = (props) => {
   const handleClick = (e) => {
-    console.log(e.target.value);
+    axios({
+      method: 'GET',
+      url: 'http://localhost:3000/subway/stops',
+      params: {
+        line: e.target.value,
+      },
+    })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const Buttons = lines.map(({ Line, color }) => {
