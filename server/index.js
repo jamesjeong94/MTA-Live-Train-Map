@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(cors());
 
-app.use(express.static('../public'));
+app.use(express.static(__dirname + '/../public'));
 app.use('/subway', stopsRouter);
 
 app.listen(PORT, () => {
