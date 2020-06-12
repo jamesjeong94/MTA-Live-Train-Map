@@ -1,24 +1,15 @@
-import fs from 'fs';
+const fs = require('fs');
+const path = require('path');
 
-const stopsData = fs.readFileSync('data/rawStopInfo.json');
+const rawStopInfoPath = path.resolve(__dirname, '../../data/rawStopInfo.json');
+
+const stopsData = fs.readFileSync(rawStopInfoPath);
 const stopsDataParsed = JSON.parse(stopsData.toString());
 
-const stopColorCoding = {
-  orange: ['B', 'D', 'F', 'M'],
-  blue: ['A', 'C', 'E'],
-  lightgreen: ['G'],
-  green: ['4', '5', '6'],
-  yellow: ['N', 'Q', 'R'],
-  gray: ['L '],
-  red: ['1', '2', '3'],
-  brown: ['J', 'Z'],
-  purple: ['7 '],
-};
-
-const colorInStationCheck = function (stop, subwayColor) {
-  let newSubwayColor = stopColorCoding[subwayColor].join('');
-  let stopRegex = new RegExp(`[${stop}][^\s]`, 'g');
-  let matchParse = newSubwayColor.match(stopRegex);
+const lineInStationCheck = function (stop, subwayLine) {
+  let stopRegex = new RegExp(`[${stop}]`, 'g');
+  let matchParse = subwayLine.match(stopRegex);
+  // console.log(matchParse);
   if (matchParse) {
     return true;
   } else {
@@ -26,19 +17,14 @@ const colorInStationCheck = function (stop, subwayColor) {
   }
 };
 
-//let userInputColor = 'gray'
-
-export const getStopData = function (userInputColor) {
+module.exports = getStopData = function (userInputLine) {
   let result = {};
   for (let stop in stopsDataParsed) {
     if (
-      colorInStationCheck(
-        stopsDataParsed[stop]['Daytime Routes'],
-        userInputColor
-      )
+      lineInStationCheck(stopsDataParsed[stop]['Daytime Routes'], userInputLine)
     ) {
       result[stop] = stopsDataParsed[stop];
     }
   }
-  return result;
+  return Object.values(result);
 };

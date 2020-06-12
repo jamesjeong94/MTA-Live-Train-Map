@@ -11,18 +11,23 @@ const NavBar = (props) => {
         line: e.target.value,
       },
     })
-      .then((data) => {
-        console.log(data);
+      .then(({ data }) => {
+        props.changeStops(data.data);
+        props.changeLine(e.target.value);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const Buttons = lines.map(({ Line, color }) => {
+  const Buttons = lines.map((line, index) => {
     return (
-      <button className={`${color} stopBtn`} onClick={handleClick} value={Line}>
-        {Line}
+      <button
+        key={index}
+        className={`${line.color} stopBtn`}
+        onClick={handleClick}
+        value={line.Line}>
+        {line.Line}
       </button>
     );
   });

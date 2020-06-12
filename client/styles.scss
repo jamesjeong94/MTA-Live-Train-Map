@@ -32,6 +32,21 @@ body {
     color: 'red';
     height: 80vh;
     width: 85%;
+    .Marker {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 9px;
+      height: 9px;
+      background-color: #000;
+      border: 2px solid #fff;
+      border-radius: 100%;
+      user-select: none;
+      transform: translate(-50%, -50%);
+      &:hover {
+        z-index: 1;
+      }
+    }
   }
 
   .Form {
@@ -39,4 +54,36 @@ body {
     height: 80vh;
     border: 1px solid black;
   }
+}
+
+.blue {
+  background-color: #0039a6;
+}
+
+.orange {
+  background-color: #ff6319;
+}
+
+.red {
+  background-color: #ee352e;
+}
+
+.brown {
+  background-color: #996633;
+}
+
+.yellow {
+  background-color: #fccc0a;
+}
+
+.green {
+  background-color: #00933c;
+}
+
+.lightgreen {
+  background-color: #6cbe45;
+}
+
+.purple {
+  background-color: #b933ad;
 }

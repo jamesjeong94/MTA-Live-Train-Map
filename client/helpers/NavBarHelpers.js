@@ -22,3 +22,28 @@ export const lines = [
   { Line: '6', color: 'green' },
   { Line: '7', color: 'purple' },
 ];
+
+export const colors = {
+  A: 'blue',
+  B: 'orange',
+  C: 'blue',
+  D: 'orange',
+  E: 'blue',
+  F: 'orange',
+  G: 'lightgreen',
+  J: 'brown',
+  L: 'grey',
+  M: 'orange',
+  N: 'yellow',
+  Q: 'yellow',
+  R: 'yellow',
+  S: 'grey',
+  Z: 'brown',
+  '1': 'red',
+  '2': 'red',
+  '3': 'red',
+  '4': 'green',
+  '5': 'green',
+  '6': 'green',
+  '7': 'purple',
+};
