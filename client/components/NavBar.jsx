@@ -8,7 +8,7 @@ const NavBar = (props) => {
     line = e.target.value;
     axios({
       method: 'GET',
-      url: 'http://localhost/subway/stops',
+      url: 'https://thawing-falls-97304.herokuapp.com/subway/stops',
       params: {
         line,
       },
