@@ -19,7 +19,6 @@ const calculateDistance = (stop1, stop2) => {
 };
 
 const stopsArraySorter = (entry, line) => {
-  console.log(entry);
   const stops = [...entry];
   let startingStation = getStartingStation(stops);
   const sortedStops = [];
