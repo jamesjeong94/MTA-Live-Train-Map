@@ -38,7 +38,6 @@ body {
       left: 50%;
       width: 9px;
       height: 9px;
-      background-color: #000;
       border: 2px solid #fff;
       border-radius: 100%;
       user-select: none;
@@ -53,6 +52,22 @@ body {
     width: 15%;
     height: 80vh;
     border: 1px solid black;
+  }
+}
+.infoWindow {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  background-color: white;
+  border: 1 px black;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+
+  .infoBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -86,4 +101,13 @@ body {
 
 .purple {
   background-color: #b933ad;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.formInfo {
+  width: 100%;
+  margin: 10px;
 }

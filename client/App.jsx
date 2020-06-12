@@ -14,7 +14,7 @@ const App = (props) => {
       </div>
       <div className='mapForm'>
         <Map stops={stops} line={line} />
-        <Form />
+        <Form line={line} />
       </div>
     </div>
   );

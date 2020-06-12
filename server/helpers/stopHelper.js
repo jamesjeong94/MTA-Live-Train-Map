@@ -9,7 +9,6 @@ const stopsDataParsed = JSON.parse(stopsData.toString());
 const lineInStationCheck = function (stop, subwayLine) {
   let stopRegex = new RegExp(`[${stop}]`, 'g');
   let matchParse = subwayLine.match(stopRegex);
-  // console.log(matchParse);
   if (matchParse) {
     return true;
   } else {

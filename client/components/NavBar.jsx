@@ -3,17 +3,19 @@ import { lines } from '../helpers/NavBarHelpers.js';
 import axios from 'axios';
 
 const NavBar = (props) => {
+  let line;
   const handleClick = (e) => {
+    line = e.target.value;
     axios({
       method: 'GET',
       url: 'http://localhost:3000/subway/stops',
       params: {
-        line: e.target.value,
+        line,
       },
     })
       .then(({ data }) => {
         props.changeStops(data.data);
-        props.changeLine(e.target.value);
+        props.changeLine(line);
       })
       .catch((err) => {
         console.log(err);

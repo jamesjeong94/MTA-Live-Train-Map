@@ -13,6 +13,7 @@ const Map = (props) => {
   let stops = props.stops.map((stop, index) => {
     return (
       <Marker
+        stopInfo={stop}
         color={props.line}
         key={index}
         lat={stop['GTFS Latitude']}
@@ -42,12 +43,21 @@ const Map = (props) => {
     setMarkerState();
   }, [props.stops]);
 
+  function createMapOptions(maps) {
+    return {
+      clickableIcons: false,
+    };
+  }
+
   return (
     <div className='Map'>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDlGFg3gqtgkFkoAAkiFT3gtrS0WZnmuvA' }}
         defaultCenter={{ lat: 40.7128, lng: -74.006 }}
         defaultZoom={12}
+        options={createMapOptions}
+        clickableIcons={false}
+        yesIWantToUseGoogleMapApiInternals={true}
         onGoogleApiLoaded={({ map, maps }) => onMapLoaded(map, maps)}>
         {stops}
         {mapLoaded && (

@@ -1,4 +1,5 @@
 const axios = require('axios');
+const protobuf = require('protobufjs');
 const queryString = require('query-string');
 const gtfs = require('gtfs-realtime-bindings');
 require('dotenv').config();
@@ -43,17 +44,8 @@ const getLiveTrainStream = (line) => {
     responseEncoding: 'binary',
   })
     .then(({ data }) => {
-      const feed = gtfs.transit_realtime.FeedMessage.decode(data);
-      feed.entity.forEach((entity) => {
-        if (entity.tripUpdate) {
-          const lastUpdate =
-            entity.tripUpdate.stopTimeUpdate[
-              entity.tripUpdate.stopTimeUpdate.length - 1
-            ];
-          console.log(entity);
-          console.log(lastUpdate);
-        }
-      });
+      const feed = gtfs.transit_realtime.VehiclePosition.decode(data);
+      const vehicleData = feed.trip.startDate.toString('base64');
     })
     .catch((err) => {
       console.log(err);
