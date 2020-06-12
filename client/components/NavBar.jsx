@@ -8,7 +8,7 @@ const NavBar = (props) => {
     line = e.target.value;
     axios({
       method: 'GET',
-      url: 'http://localhost:3000/subway/stops',
+      url: 'http://localhost/subway/stops',
       params: {
         line,
       },
